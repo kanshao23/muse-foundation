@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MUSE Foundation Website
 
-## Getting Started
+The official website for **MUSE Foundation** — a public ancillary fund dedicated to empowering cultural stewardship through purposeful philanthropy.
 
-First, run the development server:
+## 🏛️ About
+
+MUSE Foundation supports organisations that advance:
+
+- **Financial Literacy & Value Education** — Building financial capability and long-term economic resilience
+- **Cultural Heritage Preservation** — Preserving traditions, craftsmanship, and cultural knowledge
+- **Youth Capability & Education Pathways** — Empowering young Australians through non-traditional education
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.app/) (App Router)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Language**: TypeScript
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: [Framer Motion](https://motion.dev/)
+
+## 📄 Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with hero, themes, stats, featured grants |
+| `/about` | Mission, governance, compliance information |
+| `/grantmaking` | Grant framework, products, assessment criteria |
+| `/grantmaking/apply` | Eligibility check + grant application form |
+| `/get-involved` | Donation options, corporate partnerships |
+| `/impact` | Case stories, annual data, impact reporting |
+| `/contact` | Contact form and information |
+| `/legal` | Privacy policy, donation terms, disclaimer |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/kanshao23/muse-foundation.git
+cd muse-foundation
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+- **Primary Color**: Deep Forest Green (`#1A2F23`)
+- **Accent Color**: Gold/Bronze (`#C4A265`)
+- **Background**: Warm Cream (`#FAFAF5`)
+- **Typography**: Serif headings + Sans-serif body text
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📋 Compliance
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This website is designed to support the regulatory requirements of a public ancillary fund in Australia:
 
-## Deploy on Vercel
+- ACNC registration display
+- DGR status disclosure
+- ABN visibility
+- Annual distribution rate (4%) transparency
+- Clear separation from commercial entities
+- Privacy policy and donation terms
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Vercel (Recommended)
+
+1. Connect the GitHub repository to [Vercel](https://vercel.com)
+2. Deploy automatically on push
+
+### Static Export
+
+The site can be configured for static export by adding `output: 'export'` to `next.config.ts`.
+
+## 📝 Customization
+
+- **Site config**: `src/data/site.ts` — Foundation details, navigation, themes
+- **Colors**: `src/app/globals.css` — CSS custom properties
+- **Components**: `src/components/` — Reusable UI components
+
+## 📄 License
+
+© 2026 MUSE Foundation Ltd. All rights reserved.
