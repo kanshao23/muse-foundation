@@ -146,6 +146,57 @@ export default function AboutPage() {
             subtitle="Robust governance is the foundation of trust. Here's how we ensure accountability."
           />
 
+          {/* Governance Structure Chart */}
+          <div className="flex justify-center mb-14">
+            <svg
+              viewBox="0 0 800 300"
+              className="w-full max-w-3xl h-auto"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Connecting lines */}
+              <line x1="400" y1="70" x2="400" y2="110" stroke="#C4A265" strokeWidth="2" />
+              <line x1="150" y1="140" x2="650" y2="140" stroke="#C4A265" strokeWidth="2" />
+              <line x1="150" y1="140" x2="150" y2="170" stroke="#C4A265" strokeWidth="2" />
+              <line x1="400" y1="140" x2="400" y2="170" stroke="#C4A265" strokeWidth="2" />
+              <line x1="650" y1="140" x2="650" y2="170" stroke="#C4A265" strokeWidth="2" />
+              <line x1="150" y1="220" x2="150" y2="250" stroke="#C4A265" strokeWidth="1.5" strokeDasharray="4 3" />
+              <line x1="400" y1="220" x2="400" y2="250" stroke="#C4A265" strokeWidth="1.5" strokeDasharray="4 3" />
+              <line x1="650" y1="220" x2="650" y2="250" stroke="#C4A265" strokeWidth="1.5" strokeDasharray="4 3" />
+
+              {/* Top node: Board of Directors */}
+              <rect x="290" y="20" width="220" height="50" rx="10" fill="#1A2F23" />
+              <text x="400" y="42" textAnchor="middle" fill="#C4A265" fontSize="11" fontWeight="600" fontFamily="serif">BOARD OF DIRECTORS</text>
+              <text x="400" y="58" textAnchor="middle" fill="#FAFAF5" fontSize="9" fontFamily="sans-serif">Strategic oversight &amp; grant approval</text>
+
+              {/* Middle nodes */}
+              <rect x="60" y="170" width="180" height="50" rx="8" fill="#2A4A38" />
+              <text x="150" y="192" textAnchor="middle" fill="#C4A265" fontSize="10" fontWeight="600" fontFamily="serif">GRANT COMMITTEE</text>
+              <text x="150" y="208" textAnchor="middle" fill="#FAFAF5" fontSize="8" fontFamily="sans-serif">Assessment &amp; recommendation</text>
+
+              <rect x="310" y="170" width="180" height="50" rx="8" fill="#2A4A38" />
+              <text x="400" y="192" textAnchor="middle" fill="#C4A265" fontSize="10" fontWeight="600" fontFamily="serif">COMPLIANCE</text>
+              <text x="400" y="208" textAnchor="middle" fill="#FAFAF5" fontSize="8" fontFamily="sans-serif">ACNC &amp; ATO obligations</text>
+
+              <rect x="560" y="170" width="180" height="50" rx="8" fill="#2A4A38" />
+              <text x="650" y="192" textAnchor="middle" fill="#C4A265" fontSize="10" fontWeight="600" fontFamily="serif">FINANCE &amp; AUDIT</text>
+              <text x="650" y="208" textAnchor="middle" fill="#FAFAF5" fontSize="8" fontFamily="sans-serif">Fund management &amp; reporting</text>
+
+              {/* Bottom detail boxes */}
+              <rect x="50" y="250" width="200" height="36" rx="6" fill="#FAFAF5" stroke="#C4A265" strokeWidth="1" />
+              <text x="150" y="265" textAnchor="middle" fill="#2C2C2C" fontSize="8" fontFamily="sans-serif">Application review · Due diligence</text>
+              <text x="150" y="278" textAnchor="middle" fill="#6B6B6B" fontSize="7" fontFamily="sans-serif">Conflict of interest checks</text>
+
+              <rect x="300" y="250" width="200" height="36" rx="6" fill="#FAFAF5" stroke="#C4A265" strokeWidth="1" />
+              <text x="400" y="265" textAnchor="middle" fill="#2C2C2C" fontSize="8" fontFamily="sans-serif">Annual reporting · DGR maintenance</text>
+              <text x="400" y="278" textAnchor="middle" fill="#6B6B6B" fontSize="7" fontFamily="sans-serif">Regulatory filings</text>
+
+              <rect x="550" y="250" width="200" height="36" rx="6" fill="#FAFAF5" stroke="#C4A265" strokeWidth="1" />
+              <text x="650" y="265" textAnchor="middle" fill="#2C2C2C" fontSize="8" fontFamily="sans-serif">Minimum 4% distribution · Audit</text>
+              <text x="650" y="278" textAnchor="middle" fill="#6B6B6B" fontSize="7" fontFamily="sans-serif">Public financial disclosure</text>
+            </svg>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card padding="lg">
               <h3 className="font-serif font-bold text-lg text-muse-dark mb-4">

@@ -164,23 +164,55 @@ export default function GrantmakingPage() {
             subtitle="A clear, six-step pathway from eligibility check to grant agreement."
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {steps.map((step) => (
-              <div
-                key={step.step}
-                className="relative p-6 rounded-xl bg-muse-cream border border-muse-light-gray"
-              >
-                <span className="text-4xl font-serif font-bold text-muse-gold/20 absolute top-4 right-4">
-                  {step.step}
-                </span>
-                <h3 className="font-serif font-bold text-lg text-muse-dark mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-muse-gray leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
+          {/* Connected Flow Diagram */}
+          <div className="relative">
+            {/* SVG Connecting Lines (desktop only) */}
+            <svg
+              className="absolute top-0 left-0 w-full h-full pointer-events-none hidden lg:block"
+              viewBox="0 0 1200 400"
+              fill="none"
+              preserveAspectRatio="none"
+            >
+              {/* Row 1: step 1 → 2 → 3 */}
+              <path d="M200 80 L400 80" stroke="#C4A265" strokeWidth="2" strokeDasharray="6 4" />
+              <polygon points="395,75 405,80 395,85" fill="#C4A265" />
+              <path d="M600 80 L800 80" stroke="#C4A265" strokeWidth="2" strokeDasharray="6 4" />
+              <polygon points="795,75 805,80 795,85" fill="#C4A265" />
+              {/* Turn down from step 3 */}
+              <path d="M1000 140 L1000 200 L600 200 L600 240" stroke="#C4A265" strokeWidth="2" strokeDasharray="6 4" />
+              <polygon points="595,235 600,245 605,235" fill="#C4A265" />
+              {/* Row 2: step 4 → 5 → 6 */}
+              <path d="M400 300 L200 300" stroke="#C4A265" strokeWidth="2" strokeDasharray="6 4" />
+              <polygon points="205,295 195,300 205,305" fill="#C4A265" />
+            </svg>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {steps.map((step, index) => (
+                <div
+                  key={step.step}
+                  className="relative p-6 rounded-xl bg-muse-cream border border-muse-light-gray group hover:border-muse-gold/40 transition-colors"
+                >
+                  {/* Step number badge */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-muse-gold text-white rounded-full flex items-center justify-center font-serif font-bold text-sm">
+                      {step.step}
+                    </div>
+                    {/* Connector arrow (mobile/tablet) */}
+                    {index < steps.length - 1 && (
+                      <div className="lg:hidden text-muse-gold">
+                        <ArrowRight className="w-4 h-4 rotate-90 md:rotate-0" />
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="font-serif font-bold text-lg text-muse-dark mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-muse-gray leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt-12">

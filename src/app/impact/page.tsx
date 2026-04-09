@@ -156,29 +156,118 @@ export default function ImpactPage() {
             </div>
           </div>
 
-          {/* Theme Distribution */}
-          <h3 className="font-serif font-bold text-xl text-muse-dark mb-6 text-center">
-            Distribution by Theme
-          </h3>
-          <div className="max-w-2xl mx-auto space-y-4">
-            {annualData.themes.map((theme) => (
-              <div key={theme.name}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-muse-dark">
-                    {theme.name}
-                  </span>
-                  <span className="text-sm text-muse-gray">
-                    {theme.amount} ({theme.percentage}%)
-                  </span>
-                </div>
-                <div className="h-3 bg-muse-cream-dark rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-muse-gold rounded-full transition-all duration-500"
-                    style={{ width: `${theme.percentage}%` }}
+          {/* Theme Distribution — Charts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Donut Chart */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <svg width="280" height="280" viewBox="0 0 280 280" className="transform -rotate-90">
+                  {/* Background circle */}
+                  <circle cx="140" cy="140" r="110" fill="none" stroke="#E8E6E1" strokeWidth="32" />
+                  {/* Cultural Heritage: 40% = 144deg */}
+                  <circle
+                    cx="140" cy="140" r="110" fill="none"
+                    stroke="#3D6B50" strokeWidth="32"
+                    strokeDasharray={`${2 * Math.PI * 110 * 0.40} ${2 * Math.PI * 110 * (1 - 0.40)}`}
+                    strokeDashoffset="0"
+                    strokeLinecap="round"
                   />
+                  {/* Financial Literacy: 35% = 126deg, starts after Cultural Heritage */}
+                  <circle
+                    cx="140" cy="140" r="110" fill="none"
+                    stroke="#C4A265" strokeWidth="32"
+                    strokeDasharray={`${2 * Math.PI * 110 * 0.35} ${2 * Math.PI * 110 * (1 - 0.35)}`}
+                    strokeDashoffset={`${-2 * Math.PI * 110 * 0.40}`}
+                    strokeLinecap="round"
+                  />
+                  {/* Youth Pathways: 25% = 90deg, starts after Financial Literacy */}
+                  <circle
+                    cx="140" cy="140" r="110" fill="none"
+                    stroke="#A8873E" strokeWidth="32"
+                    strokeDasharray={`${2 * Math.PI * 110 * 0.25} ${2 * Math.PI * 110 * (1 - 0.25)}`}
+                    strokeDashoffset={`${-2 * Math.PI * 110 * 0.75}`}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                {/* Center label */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <span className="text-3xl font-serif font-bold text-muse-dark">A$285K</span>
+                  <span className="text-xs text-muse-gray">Total Distributed</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Legend + Bar Chart */}
+            <div className="space-y-6">
+              <h3 className="font-serif font-bold text-xl text-muse-dark">
+                Distribution by Theme
+              </h3>
+              {annualData.themes.map((theme) => {
+                const colors: Record<string, string> = {
+                  "Financial Literacy": "bg-muse-gold",
+                  "Cultural Heritage": "bg-muse-green-light",
+                  "Youth Pathways": "bg-muse-gold-dark",
+                };
+                const dotColors: Record<string, string> = {
+                  "Financial Literacy": "bg-muse-gold",
+                  "Cultural Heritage": "bg-muse-green-light",
+                  "Youth Pathways": "bg-muse-gold-dark",
+                };
+                return (
+                  <div key={theme.name}>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className={`w-3 h-3 rounded-full ${dotColors[theme.name]}`} />
+                        <span className="text-sm font-medium text-muse-dark">
+                          {theme.name}
+                        </span>
+                      </div>
+                      <span className="text-sm text-muse-gray font-medium">
+                        {theme.amount} ({theme.percentage}%)
+                      </span>
+                    </div>
+                    <div className="h-4 bg-muse-cream-dark rounded-full overflow-hidden">
+                      <div
+                        className={`h-full ${colors[theme.name]} rounded-full transition-all duration-700`}
+                        style={{ width: `${theme.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Grant Amount by Quarter — Bar Chart */}
+          <div className="mt-16">
+            <h3 className="font-serif font-bold text-xl text-muse-dark mb-2 text-center">
+              Quarterly Grant Distribution
+            </h3>
+            <p className="text-sm text-muse-gray text-center mb-8">
+              Tracking grant output across the fiscal year
+            </p>
+
+            <div className="bg-muse-cream rounded-2xl p-6 md:p-8">
+              <div className="flex items-end justify-center gap-6 md:gap-10 h-52 md:h-64">
+                {[
+                  { label: "Q1", value: 45, amount: "A$45K" },
+                  { label: "Q2", value: 72, amount: "A$72K" },
+                  { label: "Q3", value: 90, amount: "A$90K" },
+                  { label: "Q4", value: 78, amount: "A$78K" },
+                ].map((quarter) => (
+                  <div key={quarter.label} className="flex flex-col items-center gap-2">
+                    <span className="text-xs font-medium text-muse-dark">{quarter.amount}</span>
+                    <div className="w-12 md:w-16 bg-muse-cream-dark rounded-t-lg relative overflow-hidden" style={{ height: "200px" }}>
+                      <div
+                        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-muse-gold to-muse-gold-light rounded-t-lg transition-all duration-700"
+                        style={{ height: `${quarter.value}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-muse-gray">{quarter.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="text-center mt-10">
